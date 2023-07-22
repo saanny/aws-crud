@@ -24,7 +24,7 @@ You can find envs in `serverless.yaml` in `environment` section.
 
 1. run `sls offline start `
 
-2. run `npm run tests` on another terminal.
+2. run `npm run test` on another terminal.
 
 
 ### Deployment
