@@ -1,5 +1,5 @@
 module.exports = {
-	service: require("./service"),
+  service: require("./service"),
   router: require("../auth/router"),
-  controller: require("../auth/controller"),
+  controller: require("../auth/controller")
 };

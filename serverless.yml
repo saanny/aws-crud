@@ -69,14 +69,6 @@ resources:
                 KeyType: HASH
             Projection:
               ProjectionType: ALL
-            # ProvisionedThroughput:
-            #   ReadCapacityUnits: 5
-            #   WriteCapacityUnits: 5
-
-    # ImageS3Bucket:
-    #   Type: AWS::S3::Bucket
-    #   Properties:
-    #     BucketName: demo-bucket
 plugins:
   - serverless-dynamodb
   - serverless-offline

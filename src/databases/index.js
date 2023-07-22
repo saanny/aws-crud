@@ -1,3 +1,3 @@
 module.exports = {
-	dynamodb: require("./dynamodb"),
+  dynamodb: require("./dynamodb")
 };
