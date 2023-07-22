@@ -28,8 +28,6 @@
     "serverless-offline": "^12.0.4",
     "short-unique-id": "^4.4.4",
     "supertest": "^6.3.3",
-    "swagger-jsdoc": "5.0.1",
-    "swagger-ui-express": "^5.0.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {

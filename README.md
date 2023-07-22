@@ -90,3 +90,196 @@ POST /api/v1/auth/register
 | 201 | `CREATED` |
 | 400 | `BAD REQUEST` |
 | 409 | `CONFLICT` |
+
+## Login
+
+
+```http
+POST /api/v1/auth/login
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `email` | `string` | **Required**. |
+| `password` | `string` | **Required**. |
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+| 400 | `BAD REQUEST` |
+| 401 | `Unauthorized | email or password wrong` |
+
+
+## Create Product
+
+
+```http
+POST /api/v1/products
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `Authorization` | `string` | **Required**. provide in header authorization |
+| `name` | `string` | **Required**. |
+| `details` | `string` | **Required**. |
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 201 | `CREATED` |
+| 400 | `BAD REQUEST` |
+| 401 | `Unauthorized ` |
+
+## Get Product
+
+
+```http
+GET /api/v1/products/:id
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `Authorization` | `string` | **Required**. provide in header authorization |
+| `id` | `string` | **Required**. provide in query params|
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `0K` |
+| 401 | `Unauthorized ` |
+
+
+## Get Products
+
+
+```http
+GET /api/v1/products
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `Authorization` | `string` | **Required**. provide in header authorization |
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `0K` |
+| 401 | `Unauthorized ` |
+
+
+
+## Update Product
+
+
+```http
+PATCH /api/v1/products/:id
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `Authorization` | `string` | **Required**. provide in header authorization |
+| `id` | `string` | **Required**. provide in query params|
+| `name` | `string` | **Required**. provide in body|
+| `details` | `string` | **Required**. provide in body|
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `0K` |
+| 404 | `NOT FOUND` |
+| 401 | `Unauthorized ` |
+
+
+
+
+## Delete Product
+
+
+```http
+DELETE /api/v1/products/:id
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `Authorization` | `string` | **Required**. provide in header authorization |
+| `id` | `string` | **Required**. provide in query params|
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `0K` |
+| 404 | `NOT FOUND` |
+| 401 | `Unauthorized ` |

@@ -4,7 +4,6 @@ const {
   notFoundMiddleware,
   appMiddleware,
   customError,
-  swagger
 } = require("./middlewares");
 
 const app = express();
@@ -12,7 +11,6 @@ const app = express();
 
 appMiddleware(app);
 require("./router")(app);
-swagger(app)
 customError(app);
 notFoundMiddleware(app);
 
