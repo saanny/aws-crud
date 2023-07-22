@@ -58,3 +58,35 @@ _Note_: In current form, after deployment, your API is public and can be invoked
 
 ### Routes
 
+## Register
+
+
+```http
+POST /api/v1/auth/register
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `first_name` | `string` | **Required**. |
+| `last_name` | `string` | **Required**. |
+| `email` | `string` | **Required**. |
+| `password` | `string` | **Required**. |
+
+## Responses
+
+
+```javascript
+{
+  "status" : number,
+  "message" : string,
+  "data"    : object | null
+  "error"   : object | null
+}
+```
+## Status Codes
+
+| Status Code | Description |
+| :--- | :--- |
+| 201 | `CREATED` |
+| 400 | `BAD REQUEST` |
+| 409 | `CONFLICT` |
