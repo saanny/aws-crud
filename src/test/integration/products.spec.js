@@ -145,7 +145,6 @@ describe("products integration tests", () => {
                     .set("Authorization", `Bearer ${token}`)
                     .expect(200)
                     .end((error, result) => {
-                    
                       if (error) return done(error);
                       return done();
                     });
@@ -189,128 +188,122 @@ describe("products integration tests", () => {
                     .set("Authorization", `Bearer ${token}`)
                     .expect(200)
                     .end((error, result) => {
-                    
                       if (error) return done(error);
-                 
-                      expect(result.body.data?.Items).toEqual(expect.any(Array));
+
+                      expect(result.body.data?.Items).toEqual(
+                        expect.any(Array)
+                      );
                       expect(typeof result.body.data?.Count).toBe("number");
                       return done();
                     });
                 });
             });
         });
-      });
+    });
 
-
-
-      it("Products - should delete product", (done) => {
-        let token = "";
-        let productId = ""
-        server
-          .post("/auth/register")
-          .send({
-            first_name: "amir",
-            last_name: "ahmadi",
-            email: "amirfahmadidev@gmail.com",
-            password: "123515sfkafgjgas@da"
-          })
-          .expect(201)
-          .end((error, result) => {
-            server
-              .post("/auth/login")
-              .send({
-                email: "amirfahmadidev@gmail.com",
-                password: "123515sfkafgjgas@da"
-              })
-              .expect(200)
-              .end((error, result) => {
-                token = result.body.data?.token;
-                server
-                  .post("/products")
-                  .set("Authorization", `Bearer ${token}`)
-                  .send({
-                    name: "test product",
-                    detail: "product details"
-                  })
-                  .expect(201)
-                  .end((error, result) => {
-
-                    productId = result.body.data.id
-
-                    server
-                      .delete(`/products/${productId}`)
-                      .set("Authorization", `Bearer ${token}`)
-                      .expect(200)
-                      .end((error, result) => {
-                      
-                        if (error) return done(error);
-                       expect(result.body.status).toBe("success");
-                       expect(result.body.message).toBe("Successfully deleted");
-                      
-                        return done();
-                      });
-                  });
-              });
-          });
-        });
-
-        it("Products - should update product", (done) => {
-          let token = "";
-          let productId = ""
+    it("Products - should delete product", (done) => {
+      let token = "";
+      let productId = "";
+      server
+        .post("/auth/register")
+        .send({
+          first_name: "amir",
+          last_name: "ahmadi",
+          email: "amirfahmadidev@gmail.com",
+          password: "123515sfkafgjgas@da"
+        })
+        .expect(201)
+        .end((error, result) => {
           server
-            .post("/auth/register")
+            .post("/auth/login")
             .send({
-              first_name: "amir",
-              last_name: "ahmadi",
               email: "amirfahmadidev@gmail.com",
               password: "123515sfkafgjgas@da"
             })
-            .expect(201)
+            .expect(200)
             .end((error, result) => {
+              token = result.body.data?.token;
               server
-                .post("/auth/login")
+                .post("/products")
+                .set("Authorization", `Bearer ${token}`)
                 .send({
-                  email: "amirfahmadidev@gmail.com",
-                  password: "123515sfkafgjgas@da"
+                  name: "test product",
+                  detail: "product details"
                 })
-                .expect(200)
+                .expect(201)
                 .end((error, result) => {
-                  token = result.body.data?.token;
+                  productId = result.body.data.id;
+
                   server
-                    .post("/products")
+                    .delete(`/products/${productId}`)
                     .set("Authorization", `Bearer ${token}`)
-                    .send({
-                      name: "test product",
-                      detail: "product details"
-                    })
-                    .expect(201)
+                    .expect(200)
                     .end((error, result) => {
-  
-                      productId = result.body.data.id
-  
-                      server
-                        .patch(`/products/${productId}`)
-                        .set("Authorization", `Bearer ${token}`)
-                        .send({
-                          name: "new test product",
-                          detail: "new product details"
-                        })
-                        .expect(200)
-                        .end((error, result) => {
-                        
-                          if (error) return done(error);
-                          
-                           expect(result.body.status).toBe("success");
-                           expect(result.body.message).toBe(`Product with ID ${productId} updated successfully.`);
-                        
-                          return done();
-                        });
+                      if (error) return done(error);
+                      expect(result.body.status).toBe("success");
+                      expect(result.body.message).toBe("Successfully deleted");
+
+                      return done();
                     });
                 });
             });
-          });
-    
-  
+        });
+    });
 
+    it("Products - should update product", (done) => {
+      let token = "";
+      let productId = "";
+      server
+        .post("/auth/register")
+        .send({
+          first_name: "amir",
+          last_name: "ahmadi",
+          email: "amirfahmadidev@gmail.com",
+          password: "123515sfkafgjgas@da"
+        })
+        .expect(201)
+        .end((error, result) => {
+          server
+            .post("/auth/login")
+            .send({
+              email: "amirfahmadidev@gmail.com",
+              password: "123515sfkafgjgas@da"
+            })
+            .expect(200)
+            .end((error, result) => {
+              token = result.body.data?.token;
+              server
+                .post("/products")
+                .set("Authorization", `Bearer ${token}`)
+                .send({
+                  name: "test product",
+                  detail: "product details"
+                })
+                .expect(201)
+                .end((error, result) => {
+                  productId = result.body.data.id;
+
+                  server
+                    .patch(`/products/${productId}`)
+                    .set("Authorization", `Bearer ${token}`)
+                    .send({
+                      name: "new test product",
+                      detail: "new product details"
+                    })
+                    .expect(200)
+                    .end((error, result) => {
+                      if (error) return done(error);
+
+                      expect(result.body.status).toBe("success");
+                      expect(result.body.message).toBe(
+                        `Product with ID ${productId} updated successfully.`
+                      );
+
+                      return done();
+                    });
+                });
+            });
+        });
+    });
   });
 });
