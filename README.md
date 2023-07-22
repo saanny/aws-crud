@@ -56,9 +56,9 @@ functions:
 _Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [`httpApi` event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api/). Additionally, in current configuration, the DynamoDB table will be removed when running `serverless remove`. To retain the DynamoDB table even after removal of the stack, add `DeletionPolicy: Retain` to its resource definition.
 
 
-### Routes
+## Routes
 
-## Register
+### Register
 
 
 ```http
@@ -72,7 +72,7 @@ POST /api/v1/auth/register
 | `email` | `string` | **Required**. |
 | `password` | `string` | **Required**. |
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -83,7 +83,7 @@ POST /api/v1/auth/register
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
@@ -91,7 +91,7 @@ POST /api/v1/auth/register
 | 400 | `BAD REQUEST` |
 | 409 | `CONFLICT` |
 
-## Login
+### Login
 
 
 ```http
@@ -103,7 +103,7 @@ POST /api/v1/auth/login
 | `email` | `string` | **Required**. |
 | `password` | `string` | **Required**. |
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -114,7 +114,7 @@ POST /api/v1/auth/login
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
@@ -123,7 +123,7 @@ POST /api/v1/auth/login
 | 401 | `Unauthorized | email or password wrong` |
 
 
-## Create Product
+### Create Product
 
 
 ```http
@@ -136,7 +136,7 @@ POST /api/v1/products
 | `name` | `string` | **Required**. |
 | `details` | `string` | **Required**. |
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -147,7 +147,7 @@ POST /api/v1/products
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
@@ -155,7 +155,7 @@ POST /api/v1/products
 | 400 | `BAD REQUEST` |
 | 401 | `Unauthorized ` |
 
-## Get Product
+### Get Product
 
 
 ```http
@@ -167,7 +167,7 @@ GET /api/v1/products/:id
 | `Authorization` | `string` | **Required**. provide in header authorization |
 | `id` | `string` | **Required**. provide in query params|
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -178,7 +178,7 @@ GET /api/v1/products/:id
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
@@ -186,7 +186,7 @@ GET /api/v1/products/:id
 | 401 | `Unauthorized ` |
 
 
-## Get Products
+### Get Products
 
 
 ```http
@@ -197,7 +197,7 @@ GET /api/v1/products
 | :--- | :--- | :--- |
 | `Authorization` | `string` | **Required**. provide in header authorization |
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -208,7 +208,7 @@ GET /api/v1/products
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
@@ -217,7 +217,7 @@ GET /api/v1/products
 
 
 
-## Update Product
+### Update Product
 
 
 ```http
@@ -231,7 +231,7 @@ PATCH /api/v1/products/:id
 | `name` | `string` | **Required**. provide in body|
 | `details` | `string` | **Required**. provide in body|
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -242,7 +242,7 @@ PATCH /api/v1/products/:id
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
@@ -253,7 +253,7 @@ PATCH /api/v1/products/:id
 
 
 
-## Delete Product
+### Delete Product
 
 
 ```http
@@ -265,7 +265,7 @@ DELETE /api/v1/products/:id
 | `Authorization` | `string` | **Required**. provide in header authorization |
 | `id` | `string` | **Required**. provide in query params|
 
-## Responses
+#### Responses
 
 
 ```javascript
@@ -276,7 +276,7 @@ DELETE /api/v1/products/:id
   "error"   : object | null
 }
 ```
-## Status Codes
+#### Status Codes
 
 | Status Code | Description |
 | :--- | :--- |
