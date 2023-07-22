@@ -14,17 +14,17 @@ You can find envs in `serverless.yaml` in `environment` section.
 
 1. Install [docker](https://docs.docker.com/desktop/install/windows-install/#:~:text=Double%2Dclick%20Docker%20Desktop%20Installer,bottom%20of%20your%20web%20browser.) on your machine.
 
-2. Install DynamoDB Local (unless using docker setup, see below) sls dynamodb install , This package has issue in installing please read this (github page)[https://github.com/99x/serverless-dynamodb-local/issues/294] 
+2. Install DynamoDB Local `sls dynamodb install` , This package has issue in installing please read this [github page](https://github.com/99x/serverless-dynamodb-local/issues/294)
 
-3. run sls dynamodb start --migrate
+3. run `sls dynamodb start --migrate`
 
-4. run sls offline start
+4. run `sls offline start`
 
 ### Tests
 
-1. run sls offline start 
+1. run `sls offline start `
 
-2. npm run tests
+2. run `npm run tests` on another terminal.
 
 
 ### Deployment
