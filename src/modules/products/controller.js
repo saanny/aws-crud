@@ -12,7 +12,7 @@ const create = async (req, res, next) => {
   const { name, detail } = req.body;
   try {
     const product = await createProduct(name, detail, req.user);
-    return response({ res, statusCode: httpStatus.OK, data: product });
+    return response({ res, statusCode: httpStatus.CREATED, data: product });
   } catch (error) {
     next(error);
   }

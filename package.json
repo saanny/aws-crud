@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "yarn-or-npm run test:prod",
-    "test": "jest",
+    "test": "jest --runInBand",
     "lint": "eslint ./src",
     "format": "prettier --check ./src/**/* --write"
   },
