@@ -10,13 +10,16 @@ const createProduct = async (name,detail,user)=>{
   try {
     const uId = new ShortUniqueId({ length: 10 });
     const productId = uId()
+    const now = new Date(); 
     const params = {
       TableName: PRODUCT_TABLE,
       Item: {
         id: productId,
         name,
         detail,
-        userId:user.id
+        userId:user.id,
+        created_at: now.toISOString(), 
+        updated_at: now.toISOString(),
       },
     };
 
@@ -29,7 +32,9 @@ const createProduct = async (name,detail,user)=>{
       id: productId,
       name,
       detail,
-      user:userData
+      user:userData,
+      created_at: now.toLocaleDateString('en-GB'),
+      updated_at: now.toLocaleDateString('en-GB')
     }
   } catch (error) {
     throw error;
@@ -78,8 +83,14 @@ const getProducts = async (user)=>{
     };
 
     const {Count,Items} = await dynamodb.dynamoDbClient.send(new QueryCommand(params));
- 
-    return {Count,Items};
+      const itemsChanged = Items.map(item => {
+      return {
+        ...item,
+        created_at: new Date(item.created_at).toLocaleDateString('en-GB'),
+        updated_at: new Date(item.updated_at).toLocaleDateString('en-GB'),
+      }
+    })
+    return {Count,Items:itemsChanged};
   } catch (error) {
     throw error;
   }
@@ -91,21 +102,22 @@ const updateProduct = async (productId,user,{name,detail})=>{
     if(!product){
       throw new AppError("Product notfound", 404);
     }
-
+    const now = new Date().toISOString();
   const params = {
     TableName: PRODUCT_TABLE,
     Key: {
       id:  productId 
     },
-    UpdateExpression: 'SET #name = :name, #detail = :detail', 
+    UpdateExpression: 'SET #name = :name, #detail = :detail,  #updated_at = :updated_at', 
     ExpressionAttributeNames: {
       '#name': 'name', 
       '#detail': 'detail', 
-     
+      '#updated_at': 'updated_at', 
     },
     ExpressionAttributeValues: {
       ':name':  name, 
       ':detail': detail , 
+      ':updated_at':now
     
     },
   };
