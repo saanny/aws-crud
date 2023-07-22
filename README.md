@@ -134,7 +134,7 @@ POST /api/v1/products
 | :--- | :--- | :--- |
 | `Authorization` | `string` | **Required**. provide in header authorization |
 | `name` | `string` | **Required**. |
-| `details` | `string` | **Required**. |
+| `detail` | `string` | **Required**. |
 
 #### Responses
 
@@ -229,7 +229,7 @@ PATCH /api/v1/products/:id
 | `Authorization` | `string` | **Required**. provide in header authorization |
 | `id` | `string` | **Required**. provide in query params|
 | `name` | `string` | **Required**. provide in body|
-| `details` | `string` | **Required**. provide in body|
+| `detail` | `string` | **Required**. provide in body|
 
 #### Responses
 
