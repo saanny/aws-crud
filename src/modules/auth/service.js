@@ -1,5 +1,3 @@
-const { dynamodb } = require("../../databases");
-const USER_TABLE = process.env.USER_TABLE;
 const jwt = require("jsonwebtoken");
 const {
   createUser,
@@ -8,7 +6,6 @@ const {
 } = require("../users/service");
 const { AppError } = require("../../utils");
 const bcrypt = require("bcryptjs");
-const { GetCommand } = require("@aws-sdk/lib-dynamodb");
 
 const signToken = (id) => {
   return jwt.sign(
